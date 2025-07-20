@@ -74,8 +74,8 @@ export const itemsAPI = {
 }
 
 export const categoriesAPI = {
-  getCategories: () => api.get('/api/categories/'),
-  getCategories: () => api.get('/api/items/categories/'),
+  getGeneralCategories: () => api.get('/api/categories/'),
+  getItemCategories: () => api.get('/api/items/categories/'),
   getFeaturedItems: () => api.get('/api/featured-items/'),
 }
 
