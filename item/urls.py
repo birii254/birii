@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import CategoryListView, ItemCreateView 
 
 from . import views
 
@@ -10,4 +11,6 @@ urlpatterns = [
     path('<int:pk>/', views.detail, name='detail'),
     path('<int:pk>/delete/', views.delete, name='delete'),
     path('<int:pk>/edit/', views.edit, name='edit'),
+    path('api/categories/', CategoryListView.as_view(), name='category-list'),
+    path('api/items/', ItemCreateView.as_view(), name='item-create'),
 ]

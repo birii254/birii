@@ -225,6 +225,7 @@ X_FRAME_OPTIONS = 'DENY'
 # CORS Settings
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,
+    "https://newrevolution.netlify.app"
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
@@ -246,3 +247,7 @@ CACHES = {
 # Celery Configuration
 CELERY_BROKER_URL = config('REDIS_URL', default='redis://127.0.0.1:6379/0')
 CELERY_RESULT_BACKEND = config('REDIS_URL', default='redis://127.0.0.1:6379/0')
+
+# For file uploads
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
