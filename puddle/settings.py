@@ -15,10 +15,15 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-j4ippt+3h39u4ontllpc8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,.herokuapp.com,.railway.app,.render.com', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = [
+    'birii.onrender.com',
+    'newrevolution.netlify.app',
+    'yourapp.herokuapp.com',  # If using Heroku
+    '127.0.0.1',              # For local testing
+]
 
 # Frontend URL for CORS
-FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
+FRONTEND_URL = config('newrevolution.netlify.app', default='http://localhost:3000')
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
