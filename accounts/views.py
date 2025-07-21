@@ -12,7 +12,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import UserProfile
-from .forms import UserProfileForm, LoginForm, SignupForm
+from core.forms import LoginForm, SignupForm
+from .forms import UserProfileForm
 from item.models import Item, ItemFavorite
 import json
 

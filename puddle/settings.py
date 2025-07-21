@@ -107,6 +107,11 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ],
+        'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FormParser',
+        ],
 }
 
 # JWT Configuration
@@ -225,7 +230,7 @@ X_FRAME_OPTIONS = 'DENY'
 # CORS Settings
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,
-    "https://newrevolution.netlify.app"
+    "https://newrevolution.netlify.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]

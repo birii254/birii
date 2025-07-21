@@ -9,17 +9,23 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('', include('core.urls')),
-    path('items/', include('item.urls')),
+    path('items/', include('item.urls')),  # For traditional Django views
     path('dashboard/', include('dashboard.urls')),
     path('inbox/', include('conversation.urls')),
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
 
-    # API endpoints
-    path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/auth/', include('accounts.api.urls')),
-    path('api/items/', include('item.api.urls')),
+    # API endpoints - organized by version and app
+    path('api/auth/', include('accounts.api.urls')),  # All auth endpoints
+    path('api/items/', include('item.api.urls')),     # All item endpoints
     path('api/conversations/', include('conversation.api.urls')),
-    path('api/', include('core.api.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('api/core/', include('core.api.urls')),
+    
+    # JWT Token endpoints
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
+
+# For serving media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
